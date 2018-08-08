@@ -37,7 +37,7 @@ class RobotToy(object):
 
         @wraps(func)
         def wrapper_func(self, *args, **kwargs):
-            if self.position.x and self.position.y:
+            if self.position.x and self.position.y or self.position.x == 0 or self.position.y == 0:
                 return func(self, *args, **kwargs)
             print('Please place robot first.')
         return wrapper_func

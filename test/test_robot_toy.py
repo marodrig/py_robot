@@ -32,9 +32,9 @@ class TestRobotToy(unittest.TestCase):
         self.assertEqual(self.toy.position.x, 2)
 
     def test_move_forward_n_from_origin(self):
-        self.toy.place_robot('N', 0, 0)
+        self.toy.place_robot('N', 1, 1)
         self.toy.move_forward()
-        self.assertEqual(self.toy.position.y, 1)
+        self.assertEqual(self.toy.position.y, 2)
 
     def test_move_out_board_from_origin(self):
         self.toy.place_robot('S', 0, 0)
@@ -65,6 +65,10 @@ class TestRobotToy(unittest.TestCase):
         self.toy.place_robot('S', 2, 3)
         self.toy.rotate_right()
         self.assertEqual(self.toy.direction, 'W')
+
+    def test_moving_without_placing(self):
+        with self.assertRaises(ValueError):
+            self.toy.move_forward()
 
     def tearDown(self):
         self.toy = None

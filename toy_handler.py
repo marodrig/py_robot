@@ -11,9 +11,10 @@ class ToyHandler(object):
             for line in py_stdin:
                 commands = list([str(x).rstrip() for x in line.split(' ')])
                 if commands[0] == 'PLACE':
-                    self.toy.place_robot(coord_x=commands[1].strip(','),
-                                         coord_y=commands[2].strip(','),
-                                         dir_facing=commands[3][0])
+                    self.toy.place_robot(
+                        coord_x=commands[1].strip(','),
+                        coord_y=commands[2].strip(','),
+                        dir_facing=commands[3][0])
                 elif commands[0] == 'MOVE':
                     self.toy.move_forward()
                 elif commands[0] == 'LEFT':

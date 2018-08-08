@@ -43,13 +43,25 @@ class RobotToy(object):
     @robot_placed_required
     def move_forward(self):
         if self.direction == 'N':
-            self.position.y += 1
+            try:
+                self.position.y += 1
+            except ValueError as ve:
+                print(ve)
         elif self.direction == 'E':
-            self.position.x += 1
+            try:
+                self.position.x += 1
+            except ValueError as ve:
+                print(ve)
         elif self.direction == 'S':
-            self.position.y -= 1
+            try:
+                self.position.y -= 1
+            except ValueError as ve:
+                print(ve)
         elif self.direction == 'W':
-            self.position.x -= 1
+            try:
+                self.position.x -= 1
+            except ValueError as ve:
+                print(ve)
 
     @robot_placed_required
     def rotate_left(self):

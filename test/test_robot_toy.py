@@ -1,5 +1,5 @@
 import unittest
-from toy_robot.robot_toy import RobotToy
+from toy_robot.robot import RobotToy
 
 
 class TestRobotToy(unittest.TestCase):

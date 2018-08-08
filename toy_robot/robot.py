@@ -27,15 +27,18 @@ class RobotToy(object):
 
         @wraps(func)
         def wrapper_func(self, *args, **kwargs):
-            if not self.position.x and not self.position.y:
-                raise ValueError('Bad.')
-            return func(self, *args, **kwargs)
+            if self.position.x and self.position.y:
+                return func(self, *args, **kwargs)
+            print('Please place robot first.')
         return wrapper_func
 
     def place_robot(self, dir_facing, coord_x, coord_y):
-        self.direction = dir_facing
-        self.position.x = coord_x
-        self.position.y = coord_y
+        try:
+            self.direction = dir_facing
+            self.position.x = coord_x
+            self.position.y = coord_y
+        except ValueError as e:
+            print(e)
 
     @robot_placed_required
     def move_forward(self):

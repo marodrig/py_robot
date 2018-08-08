@@ -1,5 +1,5 @@
 import sys
-from toy_robot.robot_toy import RobotToy
+from toy_robot.robot import RobotToy
 
 
 class ToyHandler(object):
@@ -9,11 +9,11 @@ class ToyHandler(object):
     def read_command(self):
         with sys.stdin as py_stdin:
             for line in py_stdin:
-                commands = list(line.split(','))
+                commands = list([str(x).rstrip().strip(',') for x in line.split(' ')])
                 if commands[0] == 'PLACE':
-                    self.toy.place_robot(coord_x=commands[1], 
-                                         coord_y=commands[2], 
-                                         dir_facing=commands[3])
+                    self.toy.place_robot(coord_x=commands[1],
+                                        coord_y=commands[2],
+                                        dir_facing=commands[3][0])
                 elif commands[0] == 'MOVE':
                     self.toy.move_forward()
                 elif commands[0] == 'LEFT':
@@ -23,7 +23,7 @@ class ToyHandler(object):
                 elif commands[0] == 'REPORT':
                     print(self.toy)
                 else:
-                    print('Bad command.')
+                    break
 
 
 if __name__ == '__main__':

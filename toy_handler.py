@@ -3,10 +3,16 @@ from toy_robot.robot import RobotToy
 
 
 class ToyHandler(object):
+    """
+    Handles the commands for the toy robot
+    """
     def __init__(self):
         self.toy = RobotToy()
 
     def read_command(self):
+        """
+        Reads commands from STDIN for the toy robot
+        """
         with sys.stdin as py_stdin:
             for line in py_stdin:
                 commands = list([str(x).rstrip() for x in line.split(' ')])

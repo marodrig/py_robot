@@ -3,6 +3,9 @@ from functools import wraps
 
 
 class RobotToy(object):
+    """
+    Represents Robot Toy.
+    """
 
     def __init__(self):
         self._position = PyCoordinates()
@@ -24,6 +27,13 @@ class RobotToy(object):
         return self._position
 
     def robot_placed_required(func):
+        """
+        Checks if the robot has been placed before executing the given method
+
+        :param func: function called
+        :func type: python function
+
+        """
 
         @wraps(func)
         def wrapper_func(self, *args, **kwargs):
@@ -33,6 +43,19 @@ class RobotToy(object):
         return wrapper_func
 
     def place_robot(self, dir_facing, coord_x, coord_y):
+        """
+        Assigns the location and direction of the toy robot.
+
+        :param dir_facing: Direction the toy is facing
+        :dir_facing type: str
+
+        :param coord_x: x coordinate of the toy 
+        :coord_x type: int
+
+        :param coord_y: y coordinate of the toy
+        :coord_y type: int
+
+        """
         try:
             self.direction = dir_facing
             self.position.x = coord_x
@@ -42,6 +65,9 @@ class RobotToy(object):
 
     @robot_placed_required
     def move_forward(self):
+        """
+        Moves robot forward in the direction it's facing
+        """
         if self.direction == 'N':
             try:
                 self.position.y += 1
@@ -86,7 +112,7 @@ class RobotToy(object):
             self.direction == 'N'
 
     def __str__(self):
-        return "Position:(x = {0}, y ={1}). Facing: {2}".format(
+        return "Position:(x = {0}, y = {1}). Facing: {2}".format(
                 self.position.x,
                 self.position.y,
                 self.direction)

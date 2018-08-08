@@ -1,4 +1,7 @@
 class PyCoordinates(object):
+    """
+    Represents x-y coordinate
+    """
 
     def __init__(self):
         self._x = None

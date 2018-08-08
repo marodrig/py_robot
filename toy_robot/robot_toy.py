@@ -36,4 +36,29 @@ class RobotToy(object):
             self.position.y -= 1
         elif self.direction == 'W':
             self.position.x -= 1
-    
+
+    def rotate_left(self):
+        if self.direction == 'N':
+            self.direction = 'W'
+        elif self.direction == 'W':
+            self.direction = 'S'
+        elif self.direction == 'S':
+            self.direction = 'E'
+        elif self.direction == 'E':
+            self.direction == 'N'
+
+    def rotate_right(self):
+        if self.direction == 'N':
+            self.direction = 'E'
+        elif self.direction == 'E':
+            self.direction = 'S'
+        elif self.direction == 'S':
+            self.direction = 'W'
+        elif self.direction == 'W':
+            self.direction == 'N'
+
+    def __str__(self):
+        return "Position:(x = {0}, y ={1}). Facing: {2}".format(
+                self.position.x,
+                self.position.y,
+                self.direction)

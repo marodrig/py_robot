@@ -56,12 +56,9 @@ class RobotToy(object):
         :coord_y type: int
 
         """
-        try:
-            self.direction = dir_facing
-            self.position.x = coord_x
-            self.position.y = coord_y
-        except ValueError as e:
-            print(e)
+        self.direction = dir_facing
+        self.position.x = coord_x
+        self.position.y = coord_y
 
     @robot_placed_required
     def move_forward(self):
@@ -69,25 +66,13 @@ class RobotToy(object):
         Moves robot forward in the direction it's facing
         """
         if self.direction == 'N':
-            try:
-                self.position.y += 1
-            except ValueError as ve:
-                print(ve)
+             self.position.y += 1
         elif self.direction == 'E':
-            try:
-                self.position.x += 1
-            except ValueError as ve:
-                print(ve)
+             self.position.x += 1
         elif self.direction == 'S':
-            try:
-                self.position.y -= 1
-            except ValueError as ve:
-                print(ve)
+             self.position.y -= 1
         elif self.direction == 'W':
-            try:
-                self.position.x -= 1
-            except ValueError as ve:
-                print(ve)
+             self.position.x -= 1
 
     @robot_placed_required
     def rotate_left(self):

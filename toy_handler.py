@@ -17,12 +17,18 @@ class ToyHandler(object):
             for line in py_stdin:
                 commands = list([str(x).rstrip() for x in line.split(' ')])
                 if commands[0] == 'PLACE':
-                    self.toy.place_robot(
-                        coord_x=commands[1].strip(','),
-                        coord_y=commands[2].strip(','),
-                        dir_facing=commands[3][0])
+                    try:
+                        self.toy.place_robot(
+                            coord_x=commands[1].strip(','),
+                            coord_y=commands[2].strip(','),
+                            dir_facing=commands[3][0])
+                    except ValueError as ve:
+                        print(ve)
                 elif commands[0] == 'MOVE':
-                    self.toy.move_forward()
+                    try:
+                        self.toy.move_forward()
+                    except ValueError as ve:
+                        print(ve)
                 elif commands[0] == 'LEFT':
                     self.toy.rotate_left()
                 elif commands[0] == 'RIGHT':

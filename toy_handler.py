@@ -24,7 +24,7 @@ class ToyHandler(object):
                             dir_facing=commands[3][0])
                     except ValueError as ve:
                         print(ve)
-                elif commands[0] == 'MOVE':
+                elif commands[0] == 'MOVE':1
                     try:
                         self.toy.move_forward()
                     except ValueError as ve:

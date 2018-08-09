@@ -17,7 +17,7 @@ class RobotToy(object):
 
     @direction.setter
     def direction(self, val):
-        if val in ('N', 'E', 'S', 'W'):
+        if val in {'N', 'E', 'S', 'W'}:
             self._direction = val
         else:
             raise ValueError('Direction can only be N, E, S, or W.')

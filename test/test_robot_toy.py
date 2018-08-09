@@ -67,8 +67,8 @@ class TestRobotToy(unittest.TestCase):
         self.assertEqual(self.toy.direction, 'W')
 
     def test_moving_without_placing(self):
-        with self.assertRaises(ValueError):
-            self.toy.move_forward()
+        self.toy.move_forward()
+        self.assertEqual(self.toy.position.x, None)
 
     def tearDown(self):
         self.toy = None

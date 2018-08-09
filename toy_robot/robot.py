@@ -66,13 +66,13 @@ class RobotToy(object):
         Moves robot forward in the direction it's facing
         """
         if self.direction == 'N':
-             self.position.y += 1
+            self.position.y += 1
         elif self.direction == 'E':
-             self.position.x += 1
+            self.position.x += 1
         elif self.direction == 'S':
-             self.position.y -= 1
+            self.position.y -= 1
         elif self.direction == 'W':
-             self.position.x -= 1
+            self.position.x -= 1
 
     @robot_placed_required
     def rotate_left(self):
